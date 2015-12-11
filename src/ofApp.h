@@ -23,7 +23,11 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-    ricochetCube cube1;
-    echo echo1;
+        //tableau de pointeur
+    private:
+        ricochetCube** cube;
+        int nCube;
+        echo** echo;
+        int nEcho;
 		
 };

@@ -15,6 +15,7 @@ echo::echo(){
 void echo::draw(){
     
     
+    
 }
 
 void echo::expand(){
