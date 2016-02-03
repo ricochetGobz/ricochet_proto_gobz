@@ -17,10 +17,11 @@ public:
     ricochetCube();
     
         // Methods
-    void moveTo();
+    void moveTo(int _x, int _y);
+    void clicked(int _x, int _y );
     void draw();
-    int x;
-    int y;
+    int posX;
+    int posY;
     ofColor color;
 };
 

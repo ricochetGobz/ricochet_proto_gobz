@@ -6,6 +6,7 @@
 
 class ofApp : public ofBaseApp{
 
+    /* Le .h sert à déclarer les variables appelé dans le .CPP */
 	public:
 		void setup();
 		void update();
@@ -22,12 +23,17 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+
+    /* VECTOR  = Tableau d'objet , en l'occurence ici ce sont des ricochetCube. */
+    vector<ricochetCube> cube;
+    int nCube;
     
-        //tableau de pointeur
+    /*Pareil pour mon tableaux d'echo */
+    vector<echo> echo;
+    int nEcho;
+    
     private:
-        ricochetCube** cube;
-        int nCube;
-        echo** echo;
-        int nEcho;
+    
+    
 		
 };
