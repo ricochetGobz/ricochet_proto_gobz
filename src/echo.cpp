@@ -9,15 +9,19 @@
 #include <stdio.h>
 #include "echo.h"
 
-echo::echo(){
-     color.set( ofRandom(255), ofRandom(255), ofRandom(255));
+echo::echo(ofPoint _pos){
+    color.set( ofRandom(255), ofRandom(255), ofRandom(255));
+    pos = _pos;
+    size =5;
+    
 }
 void echo::draw(){
-    
-    
+    ofNoFill();
+    ofDrawCircle(pos.x+25, pos.y+25, size);
     
 }
 
 void echo::expand(){
+    size +=5;
 
 }

@@ -26,11 +26,16 @@ class ofApp : public ofBaseApp{
 
     /* VECTOR  = Tableau d'objet , en l'occurence ici ce sont des ricochetCube. */
     vector<ricochetCube> cube;
+    vector<ricochetCube>::iterator itCube ;
     int nCube;
     
     /*Pareil pour mon tableaux d'echo */
-    vector<echo> echo;
+    vector<echo> echoTab;
     int nEcho;
+    
+    /* AUDIO PART */
+    
+    vector<ofSoundPlayer> sounds;
     
     private:
     

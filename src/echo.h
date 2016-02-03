@@ -13,13 +13,12 @@
 class echo{
 public:
     // Constructor
-    echo();
+    echo(ofPoint _pos);
     
     // Methods
     void expand();
     void draw();
-    int x;
-    int y;
+    ofPoint pos;
     int size ;
     ofColor color;
 };
