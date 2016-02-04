@@ -2,8 +2,14 @@
 
 //--------------------------------------------------------------
 bool shouldRemove(echo &p){
+    
     if(p.size > 500 )return true;
     else return false;
+}
+bool hitTest(echo &p, ricochetCube &r ){
+    float _dist = ofDist( r.pos.x+25, r.pos.y+25, p.pos.x, p.pos.y);
+    if(p.size >= _dist )return true;
+    return false;
 }
 
 void ofApp::setup(){
@@ -36,6 +42,11 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
      ofRemove(echoTab,shouldRemove);
+    
+    //if(hitTest(echoTab, cube)){
+    
+   // }
+ 
     for (int i=0; i < echoTab.size(); i++) {
         echoTab[i].expand();
         
@@ -52,6 +63,7 @@ void ofApp::draw(){
     }
     for (int i=0; i < echoTab.size(); i++) {
         echoTab[i].draw();
+    
     }
     
     ofFill();
