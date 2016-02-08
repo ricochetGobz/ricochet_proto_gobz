@@ -14,6 +14,9 @@ ricochetCube::ricochetCube(){
     size = 50;
     
 }
+void ricochetCube::(string soundPath){
+        cubeSound.load(soundPath);
+}
 
 void ricochetCube::moveTo(ofPoint _pos){
     pos = ofPoint( _pos.x - size/2, _pos.y - size/2);
@@ -30,7 +33,9 @@ void ricochetCube::draw(){
 void ricochetCube::clicked(ofPoint _pos){
     
 
-  
-   
+}
+void ricochetCube::play(){
+    cubeSound.play();
     
+
 }

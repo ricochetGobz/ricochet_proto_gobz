@@ -19,12 +19,15 @@ public:
         // Methods
     void moveTo(ofPoint _pos);
     void clicked(ofPoint _pos);
+    void loadSound(string soundPath);
+    void play();
     void draw();
     int id;
     int faceId;
     int size;
     ofPoint pos;
     ofColor color;
+    ofSoundPlayer cubeSound;
 };
 
 #endif /* ricochetCube_h */

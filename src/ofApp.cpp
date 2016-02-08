@@ -115,10 +115,14 @@ void ofApp::mousePressed(int x, int y, int button){
     /* ici on peut utiliser un iterrateur dans une boucle for pour pointer vers tout les objet du tableau cube */
     /*  L'avantage des iterateurs si j'ai bien compris, c'est de point directement sans avoir ˆ assigner un int pour aller retrouv la value,
      du coup c'est plus rapide */
+    
     for(vector<ricochetCube>::iterator it = cube.begin(); it != cube.end(); ++it){
+    
         // (*it).clicked(ofPoint(x,y));
         //cout << (*it).id  << endl ;
+        
         float _dist = ofDist( (*it).pos.x+25, (*it).pos.y+25, x, y);
+        
         if(_dist < 20.0){
             ofDrawRectangle((*it).pos,60,60);
             echoTab.push_back(*new echo((*it).pos));
