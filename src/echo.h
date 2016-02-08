@@ -18,10 +18,12 @@ public:
     // Methods
     void expand();
     void draw();
+    bool hitCube(ofPoint cubePos);
     ofPoint pos;
     int size ;
     int fromCube;
     ofColor color;
+    
 };
 
 #endif /* echo_h */

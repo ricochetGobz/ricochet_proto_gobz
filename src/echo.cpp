@@ -25,3 +25,12 @@ void echo::expand(){
     size +=3;
 
 }
+
+bool echo::hitCube(ofPoint cubePos){
+        float _dist = ofDist( pos.x, pos.y, cubePos.x+25, cubePos.y+25);
+        if(size >= _dist){
+            cout << _dist << endl;
+            return true;
+        }
+        else return false;
+}
