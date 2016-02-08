@@ -14,7 +14,7 @@ ricochetCube::ricochetCube(){
     size = 50;
     
 }
-void ricochetCube::(string soundPath){
+void ricochetCube::loadSound(string soundPath){
         cubeSound.load(soundPath);
 }
 
