@@ -22,6 +22,6 @@ void echo::draw(){
 }
 
 void echo::expand(){
-    size +=5;
+    size +=3;
 
 }

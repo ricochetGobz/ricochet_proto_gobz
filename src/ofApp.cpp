@@ -6,16 +6,21 @@ bool shouldRemove(echo &p){
     if(p.size > 500 )return true;
     else return false;
 }
-bool hitTest(echo &p, ricochetCube &r ){
-    float _dist = ofDist( r.pos.x+25, r.pos.y+25, p.pos.x, p.pos.y);
-    if(p.size >= _dist )return true;
-    return false;
+bool hitTest(echo &p, vector<ricochetCube> r ){
+    for(vector<ricochetCube>::iterator it = r.begin(); it != r.end(); ++it){
+        float _dist = ofDist( p.pos.x, p.pos.y,(*it).pos.x+25, (*it).pos.y+25);
+        
+        if(p.size >= _dist ){
+            cout << _dist << endl;
+            return true;
+        }
+        return false;
+    }
 }
 
 void ofApp::setup(){
     ofBackground(0, 0,0);
-    
-    
+   
     /// Graphisme init  ///
     
     ofSetCircleResolution(60);
@@ -31,6 +36,10 @@ void ofApp::setup(){
         cube.push_back(*new ricochetCube());
     }
     
+    vector<ricochetCube>::iterator myCubes = cube.begin();
+   
+    
+    
     /* un iterateur, c'est un pointeur qui pointe vers un ricochetCube dans le tableau cube */
    itCube = cube.begin();
     for(int i = 0 ; i< 10; i++){
@@ -43,12 +52,14 @@ void ofApp::setup(){
 void ofApp::update(){
      ofRemove(echoTab,shouldRemove);
     
-    //if(hitTest(echoTab, cube)){
-    
-   // }
+   
  
     for (int i=0; i < echoTab.size(); i++) {
         echoTab[i].expand();
+        
+        if(hitTest(echoTab[i], cube)){
+            echoTab.erase(echoTab.begin() + i);
+        }
         
     }
     
@@ -107,7 +118,6 @@ void ofApp::mousePressed(int x, int y, int button){
             echoTab.push_back(*new echo((*it).pos));
             cout << _dist << endl;
             cout << " Cube Clicked" << endl;
-            
         }
     }
     
