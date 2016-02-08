@@ -14,15 +14,14 @@
 class ricochetCube{
 public:
         // Constructor
-    ricochetCube();
+    ricochetCube(ofPoint _pos);
     
         // Methods
     void moveTo(ofPoint _pos);
-    void clicked(ofPoint _pos);
     void loadSound(string soundPath);
     void play();
     void draw();
-    bool pointIsInside(ofPoint);
+    bool pointIsInside(ofPoint _pointPos);
     int id;
     int faceId;
     int size;

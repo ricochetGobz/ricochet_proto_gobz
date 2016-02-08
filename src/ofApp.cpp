@@ -6,17 +6,10 @@ bool shouldRemove(echo &p){
     if(p.size > 500 )return true;
     else return false;
 }
-//bool hitTest(echo &p, vector<ricochetCube>& r ){
-//    for(vector<ricochetCube>::iterator it = r.begin(); it != r.end(); ++it){
-//        if(p.fromCube != it - r.begin() && p.hitCube((*it).pos)){
-//            return true;
-//        }
-//    }
-//    return false;
-//}
+
 
 void ofApp::setup(){
-    ofBackground(0, 0,0);
+    ofBackground(0, 0, 0);
    
     /// Graphisme init  ///
     
@@ -26,24 +19,20 @@ void ofApp::setup(){
     vector< ofSoundPlayer>::iterator itSounds = sounds.begin();
 
     
-    
     ///// CUBE INIT ////
     /* Pushback, pour entrer un objet dans mon tableaux d'objet "cube".     */
     for(int i = 0 ; i< 6; i++){
-        cube.push_back(*new ricochetCube());
+        cube.push_back(*new ricochetCube(ofPoint( ofRandom(ofGetWidth()), ofRandom(ofGetHeight()))));
         cube[i].loadSound("./sounds/note_" + std::to_string(i+1) +".wav");
     }
-    
-    vector<ricochetCube>::iterator myCubes = cube.begin();
-   
-    
-    
-    /* un iterateur, c'est un pointeur qui pointe vers un ricochetCube dans le tableau cube */
-   itCube = cube.begin();
-    for(int i = 0 ; i< 10; i++){
-         cube[i].moveTo(ofPoint( ofRandom(ofGetWidth()), ofRandom(ofGetHeight())));
-    }
-   
+}
+
+//--------------------------------------------------------------
+void ofApp::createEcho(vector<ricochetCube>::iterator cubeIt){
+    echo newEcho = *new echo((*cubeIt).pos);
+    newEcho.fromCube = cubeIt - cube.begin();
+    (*cubeIt).play();
+    echoTab.push_back(newEcho);
 }
 
 //--------------------------------------------------------------
@@ -51,17 +40,13 @@ void ofApp::update(){
      ofRemove(echoTab,shouldRemove);
     
    
- 
     for (int i=0; i < echoTab.size(); i++) {
         echoTab[i].expand();
         
         for(vector<ricochetCube>::iterator it = cube.begin(); it != cube.end(); ++it){
             if(echoTab[i].fromCube != it - cube.begin() && echoTab[i].hitCube((*it).pos)){
                 echoTab.erase(echoTab.begin() + i);
-                echo newEcho = *new echo((*it).pos);
-                newEcho.fromCube = it - cube.begin();
-                echoTab.push_back(newEcho);
-
+                createEcho(it);
             }
         }
     }
@@ -77,12 +62,11 @@ void ofApp::draw(){
     }
     for (int i=0; i < echoTab.size(); i++) {
         echoTab[i].draw();
-    
     }
     
     ofFill();
-    ofSetColor(200,0,0);
-    ofDrawRectangle(ofGetWidth()/4,ofGetHeight()/4,50,50);
+//    ofSetColor(200,0,0);
+//    ofDrawRectangle(ofGetWidth()/4,ofGetHeight()/4,50,50);
 }
 
 //--------------------------------------------------------------
@@ -126,11 +110,7 @@ void ofApp::mouseReleased(int x, int y, int button){
         
         if((*it).pointIsInside(ofPoint(x, y))) {
             cout << " Cube Clicked" << endl;
-            ofDrawRectangle((*it).pos,60,60);
-            echo newEcho = *new echo((*it).pos);
-            newEcho.fromCube = it - cube.begin();
-            echoTab.push_back(newEcho);
-            (*it).play();
+            createEcho(it);
         }
     }
 }

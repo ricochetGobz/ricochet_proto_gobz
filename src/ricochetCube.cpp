@@ -9,9 +9,10 @@
 #include <stdio.h>
 #include "ricochetCube.h"
 #include "echo.h"
-ricochetCube::ricochetCube(){
+ricochetCube::ricochetCube(ofPoint _pos){
     color.set( ofRandom(255), ofRandom(255), ofRandom(255));
     size = 50;
+    pos = _pos;
 }
 void ricochetCube::loadSound(string soundPath){
         cubeSound.load(soundPath);
@@ -29,19 +30,13 @@ void ricochetCube::draw(){
 
 }
 
-void ricochetCube::clicked(ofPoint _pos){
-    
-
-}
 void ricochetCube::play(){
     cubeSound.play();
-    
-
 }
 
-bool ricochetCube::pointIsInside(ofPoint p){
+bool ricochetCube::pointIsInside(ofPoint pointPos){
     
-    float _dist = ofDist(pos.x+(size/2), pos.y+(size/2), p.x, p.y);
+    float _dist = ofDist(pos.x+(size/2), pos.y+(size/2), pointPos.x, pointPos.y);
     if(_dist < size/2){
         return true;
     }
