@@ -32,8 +32,9 @@ void ofApp::setup(){
     
     ///// CUBE INIT ////
     /* Pushback, pour entrer un objet dans mon tableaux d'objet "cube".     */
-    for(int i = 0 ; i< 10; i++){
+    for(int i = 0 ; i< 6; i++){
         cube.push_back(*new ricochetCube());
+        cube[i].loadSound("./sounds/note_" + std::to_string(i+1) +".wav");
     }
     
     vector<ricochetCube>::iterator myCubes = cube.begin();
@@ -119,6 +120,7 @@ void ofApp::mousePressed(int x, int y, int button){
         
         if(_dist < 20.0){
             ofDrawRectangle((*it).pos,60,60);
+            (*it).play();
             echoTab.push_back(*new echo((*it).pos));
             cout << _dist << endl;
             cout << " Cube Clicked" << endl;

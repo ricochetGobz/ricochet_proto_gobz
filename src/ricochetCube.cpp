@@ -13,7 +13,7 @@ ricochetCube::ricochetCube(){
     color.set( ofRandom(255), ofRandom(255), ofRandom(255));
     
 }
-void ricochetCube::(string soundPath){
+void ricochetCube::loadSound(string soundPath){
         cubeSound.load(soundPath);
 }
 
