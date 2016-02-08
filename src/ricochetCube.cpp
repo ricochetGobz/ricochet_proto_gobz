@@ -13,6 +13,9 @@ ricochetCube::ricochetCube(){
     color.set( ofRandom(255), ofRandom(255), ofRandom(255));
     
 }
+void ricochetCube::loadSound(string soundPath){
+        cubeSound.load(soundPath);
+}
 
 void ricochetCube::moveTo(ofPoint _pos){
     pos =_pos;
@@ -29,7 +32,9 @@ void ricochetCube::draw(){
 void ricochetCube::clicked(ofPoint _pos){
     
 
-  
-   
+}
+void ricochetCube::play(){
+    cubeSound.play();
     
+
 }

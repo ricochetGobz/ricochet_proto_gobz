@@ -32,8 +32,9 @@ void ofApp::setup(){
     
     ///// CUBE INIT ////
     /* Pushback, pour entrer un objet dans mon tableaux d'objet "cube".     */
-    for(int i = 0 ; i< 10; i++){
+    for(int i = 0 ; i< 6; i++){
         cube.push_back(*new ricochetCube());
+        cube[i].loadSound("./sounds/note_" + std::to_string(i+1) +".wav");
     }
     
     vector<ricochetCube>::iterator myCubes = cube.begin();
@@ -109,15 +110,20 @@ void ofApp::mousePressed(int x, int y, int button){
     /* ici on peut utiliser un iterrateur dans une boucle for pour pointer vers tout les objet du tableau cube */
     /*  L'avantage des iterateurs si j'ai bien compris, c'est de pointé directement sans avoir à assigner un int pour aller retrouvé la value,
      du coup c'est plus rapide */
+    
     for(vector<ricochetCube>::iterator it = cube.begin(); it != cube.end(); ++it){
+    
         // (*it).clicked(ofPoint(x,y));
         //cout << (*it).id  << endl ;
+        
         float _dist = ofDist( (*it).pos.x+25, (*it).pos.y+25, x, y);
+        
         if(_dist < 20.0){
             ofDrawRectangle((*it).pos,60,60);
             echo newEcho = *new echo((*it).pos);
             newEcho.fromCube = it - cube.begin();
             echoTab.push_back(newEcho);
+            (*it).play();
             cout << _dist << endl;
             cout << " Cube Clicked" << endl;
         }
