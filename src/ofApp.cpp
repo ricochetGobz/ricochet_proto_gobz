@@ -6,16 +6,16 @@ bool shouldRemove(echo &p){
     if(p.size > 500 )return true;
     else return false;
 }
-bool hitTest(echo &p, vector<ricochetCube> r ){
+bool hitTest(echo &p, vector<ricochetCube>& r ){
     for(vector<ricochetCube>::iterator it = r.begin(); it != r.end(); ++it){
         float _dist = ofDist( p.pos.x, p.pos.y,(*it).pos.x+25, (*it).pos.y+25);
-        
-        if(p.size >= _dist ){
+        ricochetCube currentCube = *it;
+        if(p.size >= _dist && p.fromCube != it - r.begin()){
             cout << _dist << endl;
             return true;
         }
-        return false;
     }
+    return false;
 }
 
 void ofApp::setup(){
@@ -115,7 +115,9 @@ void ofApp::mousePressed(int x, int y, int button){
         float _dist = ofDist( (*it).pos.x+25, (*it).pos.y+25, x, y);
         if(_dist < 20.0){
             ofDrawRectangle((*it).pos,60,60);
-            echoTab.push_back(*new echo((*it).pos));
+            echo newEcho = *new echo((*it).pos);
+            newEcho.fromCube = it - cube.begin();
+            echoTab.push_back(newEcho);
             cout << _dist << endl;
             cout << " Cube Clicked" << endl;
         }
