@@ -100,8 +100,14 @@ void ofApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-    
-
+    for(vector<ricochetCube>::iterator it = cube.begin(); it != cube.end(); ++it) {
+        float _dist = ofDist( (*it).pos.x+25, (*it).pos.y+25, x, y);
+        if(_dist < 20.0){
+            
+            cout << " Cube Draged" << endl;
+            (*it).moveTo(ofPoint(x, y));
+        }
+    }
 }
 
 //--------------------------------------------------------------

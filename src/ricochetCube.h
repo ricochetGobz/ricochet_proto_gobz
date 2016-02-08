@@ -22,6 +22,7 @@ public:
     void draw();
     int id;
     int faceId;
+    int size;
     ofPoint pos;
     ofColor color;
 };

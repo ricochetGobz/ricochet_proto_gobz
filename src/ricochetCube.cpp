@@ -11,18 +11,19 @@
 #include "echo.h"
 ricochetCube::ricochetCube(){
     color.set( ofRandom(255), ofRandom(255), ofRandom(255));
+    size = 50;
     
 }
 
 void ricochetCube::moveTo(ofPoint _pos){
-    pos =_pos;
+    pos = ofPoint( _pos.x - size/2, _pos.y - size/2);
     cout << " Cube Moved" << endl;
 }
 
 void ricochetCube::draw(){
     ofFill();
     ofSetColor(100,250,100);
-    ofDrawRectangle(pos,50,50);
+    ofDrawRectangle(pos,size,size);
 
 }
 
