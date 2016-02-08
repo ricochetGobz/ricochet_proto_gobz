@@ -20,6 +20,7 @@ public:
     void draw();
     ofPoint pos;
     int size ;
+    int fromCube;
     ofColor color;
 };
 
