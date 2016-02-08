@@ -22,6 +22,7 @@ public:
     void loadSound(string soundPath);
     void play();
     void draw();
+    bool pointIsInside(ofPoint);
     int id;
     int faceId;
     int size;
