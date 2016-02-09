@@ -62,3 +62,4 @@ libs/openFrameworksCompiled/lib/*/*
 !libs/openFrameworksCompiled/lib/*/.gitkeep
 
 bin/ricochet_proto_echoDebug.app/**
+bin/ricochet_proto_echoDebug.app/Contents/MacOS/ricochet_proto_echoDebug
