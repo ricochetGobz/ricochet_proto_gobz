@@ -13,15 +13,16 @@
 class echo{
 public:
     // Constructor
-    echo(ofPoint _pos);
+    echo(ofPoint _pos, int _fromCube);
     
     // Methods
     void expand();
     void draw();
     bool hitCube(ofPoint cubePos);
     ofPoint pos;
-    int size ;
     int fromCube;
+    int parent;
+    int size ;
     ofColor color;
     
 };

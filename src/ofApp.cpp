@@ -22,16 +22,16 @@ void ofApp::setup(){
     ///// CUBE INIT ////
     /* Pushback, pour entrer un objet dans mon tableaux d'objet "cube".     */
     for(int i = 0 ; i< 6; i++){
-        cube.push_back(*new ricochetCube(ofPoint( ofRandom(ofGetWidth()), ofRandom(ofGetHeight()))));
+        cube.push_back(*new ricochetCube(ofPoint(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), i));
         cube[i].loadSound("./sounds/note_" + std::to_string(i+1) +".wav");
     }
 }
 
 //--------------------------------------------------------------
-void ofApp::createEcho(vector<ricochetCube>::iterator cubeIt){
-    echo newEcho = *new echo((*cubeIt).pos);
-    newEcho.fromCube = cubeIt - cube.begin();
-    (*cubeIt).play();
+void ofApp::createEcho(ricochetCube _cube, int _cubeParent){
+    echo newEcho = *new echo(_cube.pos, _cube.cubeId);
+    _cube.play();
+    newEcho.parent = _cubeParent;
     echoTab.push_back(newEcho);
 }
 
@@ -44,9 +44,11 @@ void ofApp::update(){
         echoTab[i].expand();
         
         for(vector<ricochetCube>::iterator it = cube.begin(); it != cube.end(); ++it){
-            if(echoTab[i].fromCube != it - cube.begin() && echoTab[i].hitCube((*it).pos)){
+            if(echoTab[i].parent == it - cube.begin() || echoTab[i].fromCube == it - cube.begin()) continue;
+             
+            if(echoTab[i].hitCube((*it).pos)){
                 echoTab.erase(echoTab.begin() + i);
-                createEcho(it);
+                createEcho((*it), echoTab[i].fromCube);
             }
         }
     }
@@ -110,7 +112,7 @@ void ofApp::mouseReleased(int x, int y, int button){
         
         if((*it).pointIsInside(ofPoint(x, y))) {
             cout << " Cube Clicked" << endl;
-            createEcho(it);
+            createEcho((*it), -1);
         }
     }
 }
