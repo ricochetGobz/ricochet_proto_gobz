@@ -61,4 +61,4 @@ openFrameworksUniversal.a
 libs/openFrameworksCompiled/lib/*/*
 !libs/openFrameworksCompiled/lib/*/.gitkeep
 
-bin/*.app
+bin/ricochet_proto_echoDebug.app/**
