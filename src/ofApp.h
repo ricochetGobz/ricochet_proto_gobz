@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "ricochetCube.h"
-#include "echo.h"
+#include "echoContainer.h"
 
 class ofApp : public ofBaseApp{
 
@@ -12,8 +12,8 @@ class ofApp : public ofBaseApp{
 		void update();
 		void draw();
     
-        void createEcho(ricochetCube _cube, vector<int> _cubeList);
-
+        void createEchoContainer(ricochetCube _cube);
+    
 		void keyPressed(int key);
 		void keyReleased(int key);
 		void mouseMoved(int x, int y );
@@ -26,18 +26,15 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-    /* VECTOR  = Tableau d'objet , en l'occurence ici ce sont des ricochetCube. */
-    vector<ricochetCube> cube;
-    vector<ricochetCube>::iterator itCube ;
-    int nCube;
+        // VAR
+        int nCube = 6;
+
+        /* VECTOR = Tableau d'objets */
+        vector<ricochetCube> cubes;
+        vector<echoContainer> echoContainers;
     
-    /*Pareil pour mon tableaux d'echo */
-    vector<echo> echoTab;
-    int nEcho;
-    
-    /* AUDIO PART */
-    
-    vector<ofSoundPlayer> sounds;
+        /* AUDIO PART */
+        vector<ofSoundPlayer> sounds;
     
     private:
     
