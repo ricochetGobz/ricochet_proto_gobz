@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2D480BC1C6A4C1000983DBE /* echoContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2D480BB1C6A4C1000983DBE /* echoContainer.cpp */; };
 		C5B1A4D41C19BD6000107DB8 /* ricochetCube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5B1A4D31C19BD6000107DB8 /* ricochetCube.cpp */; };
 		C5B1A4D71C19BEEF00107DB8 /* echo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5B1A4D51C19BEEF00107DB8 /* echo.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -44,12 +45,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A2D480BB1C6A4C1000983DBE /* echoContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = echoContainer.cpp; sourceTree = "<group>"; };
+		A2D480BD1C6A4C1900983DBE /* echoContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = echoContainer.h; sourceTree = "<group>"; };
 		C56073A01C19C28200082FF9 /* echo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = echo.h; sourceTree = "<group>"; };
 		C5B1A4D11C19BD3D00107DB8 /* ricochetCube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ricochetCube.h; sourceTree = "<group>"; };
 		C5B1A4D31C19BD6000107DB8 /* ricochetCube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ricochetCube.cpp; sourceTree = "<group>"; };
 		C5B1A4D51C19BEEF00107DB8 /* echo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = echo.cpp; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
-		E4B69B5B0A3A1756003C02F2 /* ricochet_proto_echoDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ricochet_proto_echoDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* ricochet_proto_echo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ricochet_proto_echo.app; path = /Users/boulayjeremie/Developer/1_OpenFrameworks/apps/myApps/ricochet_proto_gobz/bin/ricochet_proto_echo.app; sourceTree = "<absolute>"; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
@@ -101,7 +104,6 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				6948EE371B920CB800B5AC1A /* local_addons */,
-				E4B69B5B0A3A1756003C02F2 /* ricochet_proto_echoDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +112,8 @@
 			children = (
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
+				A2D480BB1C6A4C1000983DBE /* echoContainer.cpp */,
+				A2D480BD1C6A4C1900983DBE /* echoContainer.h */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				C5B1A4D11C19BD3D00107DB8 /* ricochetCube.h */,
 				C5B1A4D31C19BD6000107DB8 /* ricochetCube.cpp */,
@@ -147,7 +151,7 @@
 			);
 			name = ricochet_proto_echo;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* ricochet_proto_echoDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* ricochet_proto_echo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -156,7 +160,7 @@
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0720;
 			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ricochet_proto_echo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -216,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5B1A4D71C19BEEF00107DB8 /* echo.cpp in Sources */,
+				A2D480BC1C6A4C1000983DBE /* echoContainer.cpp in Sources */,
 				C5B1A4D41C19BD6000107DB8 /* ricochetCube.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
@@ -240,6 +245,7 @@
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
@@ -310,6 +316,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.openFrameworks.ofapp;
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
 			};
@@ -333,6 +340,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.openFrameworks.ofapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
