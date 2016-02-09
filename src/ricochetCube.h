@@ -14,7 +14,7 @@
 class ricochetCube{
 public:
         // Constructor
-    ricochetCube(ofPoint _pos);
+    ricochetCube(ofPoint _pos, int _id);
     
         // Methods
     void moveTo(ofPoint _pos);
@@ -22,7 +22,7 @@ public:
     void play();
     void draw();
     bool pointIsInside(ofPoint _pointPos);
-    int id;
+    int cubeId;
     int faceId;
     int size;
     ofPoint pos;

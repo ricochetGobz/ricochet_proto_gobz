@@ -9,10 +9,11 @@
 #include <stdio.h>
 #include "ricochetCube.h"
 #include "echo.h"
-ricochetCube::ricochetCube(ofPoint _pos){
+ricochetCube::ricochetCube(ofPoint _pos, int _id){
     color.set( ofRandom(255), ofRandom(255), ofRandom(255));
     size = 50;
     pos = _pos;
+    cubeId = _id;
 }
 void ricochetCube::loadSound(string soundPath){
         cubeSound.load(soundPath);

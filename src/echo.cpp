@@ -9,10 +9,11 @@
 #include <stdio.h>
 #include "echo.h"
 
-echo::echo(ofPoint _pos){
+echo::echo(ofPoint _pos, int _fromCube){
     color.set( ofRandom(255), ofRandom(255), ofRandom(255));
     pos = _pos;
-    size =5;
+    fromCube = _fromCube;
+    size = 5;
     
 }
 void echo::draw(){
