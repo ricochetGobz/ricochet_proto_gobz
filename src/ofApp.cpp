@@ -73,6 +73,9 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    if(key == 'a'){
+        echoTab.clear();
+    }
     
 
 }
