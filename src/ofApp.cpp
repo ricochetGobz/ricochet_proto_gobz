@@ -3,14 +3,14 @@
 //--------------------------------------------------------------
 bool shouldRemove(echo &p){
     
-    if(p.size > 500 )return true;
-    else return false;
+    if(p.size > 200 )return true;
+    return false;
 }
 
 
 void ofApp::setup(){
     ofBackground(0, 0, 0);
-   
+    
     /// Graphisme init  ///
     
     ofSetCircleResolution(60);
@@ -28,10 +28,12 @@ void ofApp::setup(){
 }
 
 //--------------------------------------------------------------
-void ofApp::createEcho(ricochetCube _cube, int _cubeParent){
-    echo newEcho = *new echo(_cube.pos, _cube.cubeId);
+void ofApp::createEcho(ricochetCube _cube, vector<int> _cubesTouched){
+    // sauve le cube emmeteur comme cube touché
+    _cubesTouched.push_back(_cube.cubeId);
+    
+    echo newEcho = *new echo(_cube.pos, _cubesTouched);
     _cube.play();
-    newEcho.parent = _cubeParent;
     echoTab.push_back(newEcho);
 }
 
@@ -44,11 +46,17 @@ void ofApp::update(){
         echoTab[i].expand();
         
         for(vector<ricochetCube>::iterator it = cube.begin(); it != cube.end(); ++it){
-            if(echoTab[i].parent == it - cube.begin() || echoTab[i].fromCube == it - cube.begin()) continue;
-             
-            if(echoTab[i].hitCube((*it).pos)){
-                echoTab.erase(echoTab.begin() + i);
-                createEcho((*it), echoTab[i].fromCube);
+            
+            // Si l'éco
+            // peut activer d'autres cubes encore
+            // && touche un cube qu'il n'a pas déja touché
+            if(echoTab[i].hitEnabled && echoTab[i].hitCubeNeverToutched((*it).pos, (*it).cubeId)) {
+                
+                //echoTab.erase(echoTab.begin() + i);
+                echoTab[i].hitEnabled = false;
+                
+                // Créer un écho avec la liste des cubes que cet écho à déjà touché
+                createEcho((*it), echoTab[i].cubesTouched);
             }
         }
     }
@@ -67,8 +75,6 @@ void ofApp::draw(){
     }
     
     ofFill();
-//    ofSetColor(200,0,0);
-//    ofDrawRectangle(ofGetWidth()/4,ofGetHeight()/4,50,50);
 }
 
 //--------------------------------------------------------------
@@ -112,7 +118,10 @@ void ofApp::mouseReleased(int x, int y, int button){
         
         if((*it).pointIsInside(ofPoint(x, y))) {
             cout << " Cube Clicked" << endl;
-            createEcho((*it), -1);
+            
+            // Nouvelle vague qui n'a touché aucun cube.
+            vector<int> emptyCubeIdTouched;
+            createEcho((*it), emptyCubeIdTouched);
         }
     }
 }

@@ -13,18 +13,19 @@
 class echo{
 public:
     // Constructor
-    echo(ofPoint _pos, int _fromCube);
+    echo(ofPoint _pos, vector<int> _cubeAlereadyTouched);
     
     // Methods
     void expand();
     void draw();
-    bool hitCube(ofPoint cubePos);
-    ofPoint pos;
-    int fromCube;
-    int parent;
-    int size ;
-    ofColor color;
+    bool hitCubeNeverToutched(ofPoint cubePos, int _cubeId);
     
+    // Vars
+    bool hitEnabled = true;
+    int size = 5;
+    ofPoint pos;
+    ofColor color;
+    vector<int> cubesTouched;
 };
 
 #endif /* echo_h */

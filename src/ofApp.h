@@ -12,7 +12,7 @@ class ofApp : public ofBaseApp{
 		void update();
 		void draw();
     
-        void createEcho(ricochetCube _cube, int _cubeParent);
+        void createEcho(ricochetCube _cube, vector<int> _cubeList);
 
 		void keyPressed(int key);
 		void keyReleased(int key);
