@@ -41,7 +41,7 @@ void echoContainer::createEcho(ricochetCube _cube) {
     // sauve le cube emmeteur comme cube touché
     cubesTouched.push_back(_cube.cubeId);
     
-    echo newEcho = *new echo(_cube.getPos());
+    echo newEcho = *new echo(_cube.pos);
     _cube.play();
     
     echoes.push_back(newEcho);

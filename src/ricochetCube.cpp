@@ -21,7 +21,10 @@ ricochetCube::ricochetCube(ofPoint _pos, int _id){
 void ricochetCube::draw(){
     ofFill();
     ofSetColor(100,250,100);
-    ofDrawRectangle(pos,size,size);
+    ofPoint posMid;
+    posMid.x = pos.x - size /2;
+    posMid.y = pos.y - size/2;
+    ofDrawRectangle(posMid,size,size);
 }
 
 //--------------------------------------------------------------
@@ -31,7 +34,7 @@ void ricochetCube::loadSound(string soundPath){
 
 //--------------------------------------------------------------
 void ricochetCube::moveTo(ofPoint _pos){
-    pos = ofPoint( _pos.x - size/2, _pos.y - size/2);
+    pos = ofPoint( _pos.x, _pos.y);
     cout << " Cube Moved" << endl;
 }
 
@@ -43,13 +46,9 @@ void ricochetCube::play(){
 //--------------------------------------------------------------
 bool ricochetCube::pointIsInside(ofPoint pointPos){
     
-    float _dist = ofDist(pos.x+(size/2), pos.y+(size/2), pointPos.x, pointPos.y);
+    float _dist = ofDist(pos.x, pos.y, pointPos.x, pointPos.y);
     if(_dist < size/2){
         return true;
     }
     return false;
-}
-
-ofPoint ricochetCube::getPos(){
-    return ofPoint(pos.x+(size/2), pos.y+(size/2));
 }

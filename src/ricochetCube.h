@@ -22,7 +22,6 @@ public:
     void loadSound(string soundPath);
     void play();
     bool pointIsInside(ofPoint _pointPos);
-    ofPoint getPos();
     int cubeId;
     int faceId;
     int size = 50;
