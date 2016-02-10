@@ -13,7 +13,6 @@
 //--------------------------------------------------------------
 ricochetCube::ricochetCube(ofPoint _pos, int _id){
     color.set( ofRandom(255), ofRandom(255), ofRandom(255));
-    size = 50;
     pos = _pos;
     cubeId = _id;
 }

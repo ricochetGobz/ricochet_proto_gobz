@@ -23,13 +23,19 @@ void echo::draw(){
 
 //--------------------------------------------------------------
 void echo::expand(){
-    size += 4;
+    size += expandIncrement;
+}
+
+bool echo::souldRemoved() {
+    return (size > maxSize);
 }
 
 //--------------------------------------------------------------
 bool echo::checkCubeCollision(ofPoint _cubePos){    
     float _dist = ofDist( pos.x, pos.y, _cubePos.x, _cubePos.y);
+    
     cout << _dist << endl;
+    
     if(size >= _dist){
         return true;
     }

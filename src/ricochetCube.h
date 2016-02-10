@@ -24,7 +24,7 @@ public:
     bool pointIsInside(ofPoint _pointPos);
     int cubeId;
     int faceId;
-    int size;
+    int size = 50;
     ofPoint pos;
     ofColor color;
     ofSoundPlayer cubeSound;

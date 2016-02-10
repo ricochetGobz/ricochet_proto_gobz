@@ -16,10 +16,8 @@ echoContainer::echoContainer(ricochetCube _cube){
 }
 
 //--------------------------------------------------------------
-bool shouldRemove(echo &p){
-    
-    if(p.size > 200 )return true;
-    return false;
+bool shouldRemove(echo &e){
+    return e.souldRemoved();
 }
 
 //--------------------------------------------------------------
