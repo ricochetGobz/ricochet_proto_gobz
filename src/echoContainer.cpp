@@ -24,15 +24,15 @@ bool shouldRemove(echo &e){
 void echoContainer::update() {
     ofRemove(echoes, shouldRemove);
     
-    for (int i=0; i < echoes.size(); i++) {
-        echoes[i].expand();
+    for(vector<echo>::iterator it = echoes.begin(); it != echoes.end(); ++it){
+        (*it).expand();
     }
 }
 
 //--------------------------------------------------------------
 void echoContainer::draw() {
-    for (int i=0; i < echoes.size(); i++) {
-        echoes[i].draw();
+    for(vector<echo>::iterator it = echoes.begin(); it != echoes.end(); ++it){
+        (*it).draw();
     }
 }
 

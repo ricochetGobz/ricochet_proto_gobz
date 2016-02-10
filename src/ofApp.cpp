@@ -1,5 +1,15 @@
 #include "ofApp.h"
 
+
+bool shouldRemove(echoContainer &c) {
+    if(c.echoes.size() == 0) {
+        return true;
+    }
+    return false;
+}
+
+//--------------------------------------------------------------
+
 void ofApp::setup(){
     ofBackground(0, 0, 0);
     
@@ -28,13 +38,14 @@ void ofApp::createEchoContainer(ricochetCube _cube){
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){    
+void ofApp::update(){
+    ofRemove(echoContainers, shouldRemove);
    
-    for (int i=0; i < echoContainers.size(); i++) {
-        echoContainers[i].update();
+    for (vector<echoContainer>::iterator itWave = echoContainers.begin(); itWave != echoContainers.end(); ++itWave) {
+        (*itWave).update();
         
         for(vector<ricochetCube>::iterator it = cubes.begin(); it != cubes.end(); ++it){
-            echoContainers[i].checkEchoCollision((*it));
+            (*itWave).checkEchoCollision((*it));
         }
     }
 }
@@ -43,11 +54,12 @@ void ofApp::update(){
 void ofApp::draw(){
     
     /* Ici on parcour le tableaux sans iterrateur */
-    for (int i=0; i < cubes.size(); i++) {
-        cubes[i].draw();
+    for(vector<ricochetCube>::iterator it = cubes.begin(); it != cubes.end(); ++it){
+        (*it).draw();
     }
-    for (int i=0; i < echoContainers.size(); i++) {
-        echoContainers[i].draw();
+    for (vector<echoContainer>::iterator it = echoContainers.begin(); it != echoContainers.end(); ++it) {
+
+        (*it).draw();
     }
     
     ofFill();
