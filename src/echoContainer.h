@@ -18,6 +18,9 @@ public:
     // Constructor
     echoContainer(ricochetCube _cube);
     
+    //PROTO VAR
+    bool echoWithVel;
+    
     // Methods
     void update();
     void draw();
@@ -28,6 +31,11 @@ public:
     // Vars
     vector<int> cubesTouched;
     vector<echo> echoes;
+    
+private:
+    
+
+    
 };
 
 #endif /* echoContainer_hpp */
