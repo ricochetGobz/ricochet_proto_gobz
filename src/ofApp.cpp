@@ -84,33 +84,46 @@ void ofApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
+//    for(vector<ricochetCube>::iterator it = cubes.begin(); it != cubes.end(); ++it) {
+    
+        if(mouseDown) {
+            mouseMove = true;
+            cout << " Cube Draged" << endl;
+            cubes[cubeDragged].moveTo(ofPoint(x, y));
+        }
+//    }
+}
+
+//--------------------------------------------------------------
+void ofApp::mousePressed(int x, int y, int button){
     for(vector<ricochetCube>::iterator it = cubes.begin(); it != cubes.end(); ++it) {
         
         if((*it).pointIsInside(ofPoint(x, y))) {
             cout << " Cube Draged" << endl;
             (*it).moveTo(ofPoint(x, y));
+            mouseDown = true;
+            cubeDragged = (*it).cubeId;
         }
     }
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
+    
     /* ici on peut utiliser un iterrateur dans une boucle for pour pointer vers tout les objet du tableau cube */
     /*  L'avantage des iterateurs si j'ai bien compris, c'est de pointŽ directement sans avoir ˆ assigner un int pour aller retrouvŽ la value,
      du coup c'est plus rapide */
-    for(vector<ricochetCube>::iterator it = cubes.begin(); it != cubes.end(); ++it){
-        
-        if((*it).pointIsInside(ofPoint(x, y))) {
+//    for(vector<ricochetCube>::iterator it = cubes.begin(); it != cubes.end(); ++it){
+    
+        if(mouseDown) {
             cout << " Cube Clicked" << endl;
             
-            createEchoContainer((*it));
+            if(!mouseMove) createEchoContainer(cubes[cubeDragged]);
+            else cubes[cubeDragged].play();
+            mouseDown = false;
+            mouseMove = false;
         }
-    }
+//    }
 }
 
 //--------------------------------------------------------------

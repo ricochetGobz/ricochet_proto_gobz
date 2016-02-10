@@ -8,6 +8,10 @@ class ofApp : public ofBaseApp{
 
     /* Le .h sert à déclarer les variables appelé dans le .CPP */
 	public:
+        bool mouseDown = false;
+        bool mouseMove = false;
+        int cubeDragged;
+    
 		void setup();
 		void update();
 		void draw();
