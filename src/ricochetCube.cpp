@@ -13,7 +13,6 @@
 //--------------------------------------------------------------
 ricochetCube::ricochetCube(ofPoint _pos, int _id){
     color.set( ofRandom(255), ofRandom(255), ofRandom(255));
-    size = 50;
     pos = _pos;
     cubeId = _id;
 }
@@ -49,4 +48,8 @@ bool ricochetCube::pointIsInside(ofPoint pointPos){
         return true;
     }
     return false;
+}
+
+ofPoint ricochetCube::getPos(){
+    return ofPoint(pos.x+(size/2), pos.y+(size/2));
 }

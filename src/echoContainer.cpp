@@ -16,10 +16,8 @@ echoContainer::echoContainer(ricochetCube _cube){
 }
 
 //--------------------------------------------------------------
-bool shouldRemove(echo &p){
-    
-    if(p.size > 200 )return true;
-    return false;
+bool shouldRemove(echo &e){
+    return e.souldRemoved();
 }
 
 //--------------------------------------------------------------
@@ -43,7 +41,7 @@ void echoContainer::createEcho(ricochetCube _cube) {
     // sauve le cube emmeteur comme cube touché
     cubesTouched.push_back(_cube.cubeId);
     
-    echo newEcho = *new echo(_cube.pos);
+    echo newEcho = *new echo(_cube.getPos());
     _cube.play();
     
     echoes.push_back(newEcho);

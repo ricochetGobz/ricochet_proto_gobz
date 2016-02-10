@@ -19,9 +19,13 @@ public:
     void expand();
     void draw();
     bool checkCubeCollision(ofPoint _cubePos);
+    bool souldRemoved();
     
+private :
     // Vars
     int size = 5;
+    int maxSize = 200;
+    int expandIncrement = 4;
     ofPoint pos;
     ofColor color;
 };
