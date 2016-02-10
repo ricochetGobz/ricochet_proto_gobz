@@ -18,7 +18,7 @@ echo::echo(ofPoint _pos){
 //--------------------------------------------------------------
 void echo::draw(){
     ofNoFill();
-    ofDrawCircle(pos.x +25, pos.y +25, size);
+    ofDrawCircle(pos.x, pos.y, size);
 }
 
 //--------------------------------------------------------------
@@ -28,7 +28,7 @@ void echo::expand(){
 
 //--------------------------------------------------------------
 bool echo::checkCubeCollision(ofPoint _cubePos){    
-    float _dist = ofDist( pos.x, pos.y, _cubePos.x+25, _cubePos.y+25);
+    float _dist = ofDist( pos.x, pos.y, _cubePos.x, _cubePos.y);
     cout << _dist << endl;
     if(size >= _dist){
         return true;
