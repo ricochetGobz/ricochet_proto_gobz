@@ -113,11 +113,11 @@
 			children = (
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
-				A2D480BB1C6A4C1000983DBE /* echoContainer.cpp */,
-				A2D480BD1C6A4C1900983DBE /* echoContainer.h */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				C5B1A4D11C19BD3D00107DB8 /* ricochetCube.h */,
 				C5B1A4D31C19BD6000107DB8 /* ricochetCube.cpp */,
+				A2D480BB1C6A4C1000983DBE /* echoContainer.cpp */,
+				A2D480BD1C6A4C1900983DBE /* echoContainer.h */,
 				C5B1A4D51C19BEEF00107DB8 /* echo.cpp */,
 				C56073A01C19C28200082FF9 /* echo.h */,
 			);

@@ -11,7 +11,7 @@
 #include "ofMain.h"
 
 class echo{
-public:
+public :
     // Constructor
     echo(ofPoint _pos);
     
@@ -23,11 +23,13 @@ public:
     
 private :
     // Vars
-    int size = 5;
-    int maxSize = 200;
-    int expandIncrement = 4;
+    float size = 5;
     ofPoint pos;
     ofColor color;
+    
+    float sizeMax = 200;
+    float expandForce = 99;
+    float vel = 0.05;
 };
 
 #endif /* echo_h */

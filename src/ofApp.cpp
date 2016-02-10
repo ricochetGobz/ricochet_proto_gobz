@@ -67,13 +67,9 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    if(key == 'a'){
-        // Ne marche plus plur le moment
-        // Parcourir les echoContainers pour clean
-        //echoTab.clear();
+    if(key == 'e'){
+        
     }
-    
-
 }
 
 //--------------------------------------------------------------
