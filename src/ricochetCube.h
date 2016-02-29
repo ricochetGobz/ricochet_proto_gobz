@@ -18,6 +18,7 @@ class ricochetCube{
 
         // VARS
         int cubeId;
+        bool contactZoneShowed = false;
         ofPoint pos;
 
         // METHODS
@@ -31,6 +32,8 @@ class ricochetCube{
         // VARS
         int faceId;
         int size = 50;
+        float contactArea = 180;
+
         ofColor color;
         ofSoundPlayer cubeSound;
 

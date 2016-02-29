@@ -12,7 +12,7 @@ class ofApp : public ofBaseApp{
     private:
         // VAR
         int cubeDragged;
-        int nCube = 100;
+        int nCube = 8;
         bool mouseDown = false;
         bool mouseMove = false;
     

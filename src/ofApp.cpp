@@ -53,13 +53,16 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    /* Ici on parcour le tableaux sans iterrateur */
     for(vector<ricochetCube>::iterator it = cubes.begin(); it != cubes.end(); ++it){
         (*it).draw();
     }
+    
     for (vector<echoContainer>::iterator it = echoContainers.begin(); it != echoContainers.end(); ++it) {
-
         (*it).draw();
+    }
+    
+    if(cubeDragged > 0 && mouseDown){
+        cubes[cubeDragged].contactZoneShowed = true;
     }
     
     ofFill();
@@ -119,9 +122,12 @@ void ofApp::mouseReleased(int x, int y, int button){
             cout << " Cube Clicked" << endl;
             
             if(!mouseMove) createEchoContainer(cubes[cubeDragged]);
-            else cubes[cubeDragged].play();
             mouseDown = false;
             mouseMove = false;
+            
+            // Init contactZone
+            cubes[cubeDragged].contactZoneShowed = false;
+            cubeDragged = -1;
         }
 //    }
 }

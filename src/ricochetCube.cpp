@@ -25,6 +25,11 @@ void ricochetCube::draw(){
     posMid.x = pos.x - size /2;
     posMid.y = pos.y - size/2;
     ofDrawRectangle(posMid,size,size);
+
+    ofNoFill();
+    if(contactZoneShowed){
+        ofDrawCircle(pos.x, pos.y, contactArea);
+    }
 }
 
 //--------------------------------------------------------------
