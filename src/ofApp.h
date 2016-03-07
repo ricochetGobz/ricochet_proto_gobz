@@ -8,6 +8,7 @@ class ofApp : public ofBaseApp{
 
     /* Le .h sert à déclarer les variables appelé dans le .CPP */
 	public:
+
     
     private:
         // VAR
@@ -15,6 +16,10 @@ class ofApp : public ofBaseApp{
         int nCube = 8;
         bool mouseDown = false;
         bool mouseMove = false;
+        bool bSetupArduino = false;
+        ofArduino ard;
+        ofSerial serial;
+        int motorValue = 0;
     
         /* VECTOR = Tableau d'objets */
         vector<ricochetCube> cubes;
@@ -25,7 +30,9 @@ class ofApp : public ofBaseApp{
     
         // METHOD
         void setup();
+    void setupArduino();
         void update();
+        void updateArduino();
         void draw();
     
         void createEchoContainer(ricochetCube _cube);

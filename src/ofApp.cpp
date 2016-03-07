@@ -26,7 +26,35 @@ void ofApp::setup(){
         cubes.push_back(*new ricochetCube(ofPoint(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), i));
         cubes[i].loadSound("./sounds/note_" + std::to_string((i%6)+1) +".mp3");
     }
+    
+    // TEMPS //
+    ///// ARDUINO INIT ////
+    
+    // serial
+    serial.listDevices();
+    vector <ofSerialDeviceInfo> deviceList = serial.getDeviceList();
+    
+    int baud = 9600;
+    serial.setup(0, 9600);
+    
+//    // arduino
+//    ard.connect("cu.usbmodem1411", 57600);
+//    ofAddListener(ard.EInitialized, this, &ofApp::setupArduino);
 }
+
+//--------------------------------------------------------------
+void ofApp::setupArduino() {
+    
+    cout << "SETUP ARDUINO" << endl;
+    
+//    // remove listener because we don't need it anymore
+//    ofRemoveListener(ard.EInitialized, this, &ofApp::setupArduino);
+//    // this is where you setup all the pins and pin modes, etc
+//    ard.sendDigitalPinMode(9, ARD_PWM);
+//    bSetupArduino = true;
+    
+}
+
 
 //--------------------------------------------------------------
 void ofApp::createEchoContainer(ricochetCube _cube){
@@ -48,7 +76,24 @@ void ofApp::update(){
             (*itWave).checkEchoCollision((*it));
         }
     }
+    
+    updateArduino();
 }
+//--------------------------------------------------------------
+void ofApp::updateArduino(){
+    motorValue = (150 + (100 * sin( ofGetElapsedTimef() * 3.14 )));
+    
+    //With ofSerial
+    serial.writeByte(motorValue);
+
+//    // With ofArduino
+//    if(bSetupArduino) {
+//        ard.update();
+//        ard.sendPwm(9, 255, true);
+//    } else if(ard.isArduinoReady()) {
+//        setupArduino();
+//    }
+  }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
@@ -70,8 +115,13 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    if(key == 'e'){
-        
+    switch (key) {
+        case OF_KEY_UP:
+            break;
+        case OF_KEY_DOWN:
+            break;
+        default:
+            break;
     }
 }
 
