@@ -11,7 +11,7 @@ bool shouldRemove(echoContainer &c) {
 //--------------------------------------------------------------
 
 void ofApp::setup(){
-    ofBackground(0, 0, 0);
+    ofBackground(255, 255, 255);
     
     /// Graphisme init  ///
     ofSetCircleResolution(60);
@@ -225,10 +225,10 @@ float ofApp::translateSoundFrequency() {
     for (int i = 0;i < nBandsToGet; i++){
         
         // let the smoothed calue sink to zero:
-        fftSmoothed[i] *= 0.96f;
+        //fftSmoothed[i] *= 0.96f;
         
         // take the max, either the smoothed or the incoming:
-        if (fftSmoothed[i] < val[i]) fftSmoothed[i] = val[i] * 255;
+        fftSmoothed[i] = val[i] * 255;
         average += val[i] * 255;
         
     }
