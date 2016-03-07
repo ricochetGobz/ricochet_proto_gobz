@@ -36,6 +36,8 @@ class ricochetCube{
 
         ofColor color;
         ofSoundPlayer cubeSound;
+    
+        vector<ofColor> colors;
 
         // METHODS
 };

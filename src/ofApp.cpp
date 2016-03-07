@@ -20,10 +20,18 @@ void ofApp::setup(){
     //sounds.push_back(*new ofSoundPlayer);
     vector< ofSoundPlayer>::iterator itSounds = sounds.begin();
     
+    fftSmoothed = new float[8192];
+    for (int i = 0; i < 8192; i++){
+        fftSmoothed[i] = 0;
+    }
+    
+    nBandsToGet = 128;
+
+    
     ///// CUBE INIT ////
     /* Pushback, pour entrer un objet dans mon tableaux d'objet "cube".     */
     for(int i = 0; i < nCube; i++) {
-        cubes.push_back(*new ricochetCube(ofPoint(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), i));
+        cubes.push_back(*new ricochetCube(ofPoint((ofGetWidth()*i/nCube)+50, ofGetHeight()-100), i));
         cubes[i].loadSound("./sounds/note_" + std::to_string((i%6)+1) +".mp3");
     }
     
@@ -81,7 +89,8 @@ void ofApp::update(){
 }
 //--------------------------------------------------------------
 void ofApp::updateArduino(){
-    motorValue = (150 + (100 * sin( ofGetElapsedTimef() * 3.14 )));
+    //  motorValue = (150 + (100 * sin( ofGetElapsedTimef() * 3.14 )));
+    motorValue = (translateSoundFrequency());
     
     //With ofSerial
     serial.writeByte(motorValue);
@@ -205,4 +214,25 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+
+//--------------------------------------------------------------
+
+float ofApp::translateSoundFrequency() {
+    float * val = ofSoundGetSpectrum(nBandsToGet);		// request 128 values for fft
+    float average = 0;
+    for (int i = 0;i < nBandsToGet; i++){
+        
+        // let the smoothed calue sink to zero:
+        fftSmoothed[i] *= 0.96f;
+        
+        // take the max, either the smoothed or the incoming:
+        if (fftSmoothed[i] < val[i]) fftSmoothed[i] = val[i] * 255;
+        average += val[i] * 255;
+        
+    }
+    average = average * 50 / nBandsToGet;
+    cout << average << endl;
+    return average;
 }

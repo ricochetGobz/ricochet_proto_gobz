@@ -15,12 +15,19 @@ ricochetCube::ricochetCube(ofPoint _pos, int _id){
     color.set( ofRandom(255), ofRandom(255), ofRandom(255));
     pos = _pos;
     cubeId = _id;
+    
+    colors.push_back(*new ofColor(143, 202, 217));
+    colors.push_back(*new ofColor(193, 243, 221));
+    colors.push_back(*new ofColor(236, 210, 234));
+    colors.push_back(*new ofColor(129, 233, 158));
+    colors.push_back(*new ofColor(229, 131, 217));
+    colors.push_back(*new ofColor(89, 166, 212));
 }
 
 //--------------------------------------------------------------
 void ricochetCube::draw(){
     ofFill();
-    ofSetColor(100,250,100);
+    ofSetColor(colors[cubeId % 6]);
     ofPoint posMid;
     posMid.x = pos.x - size /2;
     posMid.y = pos.y - size/2;

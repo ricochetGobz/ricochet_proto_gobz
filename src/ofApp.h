@@ -21,6 +21,9 @@ class ofApp : public ofBaseApp{
         ofSerial serial;
         int motorValue = 0;
     
+        float * fftSmoothed;
+        int nBandsToGet;
+    
         /* VECTOR = Tableau d'objets */
         vector<ricochetCube> cubes;
         vector<echoContainer> echoContainers;
@@ -30,10 +33,11 @@ class ofApp : public ofBaseApp{
     
         // METHOD
         void setup();
-    void setupArduino();
+        void setupArduino();
         void update();
         void updateArduino();
         void draw();
+        float translateSoundFrequency();
     
         void createEchoContainer(ricochetCube _cube);
     
@@ -48,4 +52,5 @@ class ofApp : public ofBaseApp{
         void windowResized(int w, int h);
         void dragEvent(ofDragInfo dragInfo);
         void gotMessage(ofMessage msg);
+    
 };
