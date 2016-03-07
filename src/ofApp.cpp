@@ -24,7 +24,7 @@ void ofApp::setup(){
     /* Pushback, pour entrer un objet dans mon tableaux d'objet "cube".     */
     for(int i = 0; i < nCube; i++) {
         cubes.push_back(*new ricochetCube(ofPoint(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), i));
-        cubes[i].loadSound("./sounds/note_" + std::to_string((i%6)+1) +".wav");
+        cubes[i].loadSound("./sounds/note_" + std::to_string((i%6)+1) +".mp3");
     }
 }
 
