@@ -25,7 +25,7 @@ void ofApp::setup(){
         fftSmoothed[i] = 0;
     }
     
-    nBandsToGet = 128;
+    nBandsToGet = 1;
 
     
     ///// CUBE INIT ////
@@ -225,10 +225,11 @@ float ofApp::translateSoundFrequency() {
     for (int i = 0;i < nBandsToGet; i++){
         
         // let the smoothed calue sink to zero:
-        fftSmoothed[i] *= 0.96f;
+       // fftSmoothed[i] *= 0.96f;
         
         // take the max, either the smoothed or the incoming:
-        if (fftSmoothed[i] < val[i]) fftSmoothed[i] = val[i] * 255 * 50;
+//        if (fftSmoothed[i] < val[i])
+            fftSmoothed[i] = val[i] * 2000;
         average += val[i] * 255;
         
     }
