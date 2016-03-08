@@ -225,14 +225,14 @@ float ofApp::translateSoundFrequency() {
     for (int i = 0;i < nBandsToGet; i++){
         
         // let the smoothed calue sink to zero:
-        //fftSmoothed[i] *= 0.96f;
+        fftSmoothed[i] *= 0.96f;
         
         // take the max, either the smoothed or the incoming:
-        fftSmoothed[i] = val[i] * 255;
+        if (fftSmoothed[i] < val[i]) fftSmoothed[i] = val[i] * 255 * 50;
         average += val[i] * 255;
         
     }
     average = average * 50 / nBandsToGet;
-    cout << average << endl;
-    return average;
+    cout << fftSmoothed[0] << endl;
+    return fftSmoothed[0];
 }
