@@ -11,13 +11,14 @@
 
 //--------------------------------------------------------------
 echo::echo(ofPoint _pos){
-    color.set( ofRandom(255), ofRandom(255), ofRandom(255));
+    color.set(0.28, 0.39, 0.53);
     pos = _pos;
 }
 
 //--------------------------------------------------------------
 void echo::draw(){
     ofNoFill();
+    ofSetColor(color);
     ofDrawCircle(pos.x, pos.y, size);
 }
 
