@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ricochetCube.h"
 #include "echoContainer.h"
+#include "vibration.h"
 
 class ofApp : public ofBaseApp{
 
@@ -21,15 +22,21 @@ class ofApp : public ofBaseApp{
         ofSerial serial;
         int motorValue = 0;
     
-        float * fftSmoothed;
-        int nBandsToGet;
-    
         /* VECTOR = Tableau d'objets */
         vector<ricochetCube> cubes;
         vector<echoContainer> echoContainers;
     
         /* AUDIO PART */
+        float * fftSmoothed;
+        int nBandsToGet = 512;
+
         vector<ofSoundPlayer> sounds;
+    
+        vector<vibration> vibrations;
+    
+//        vibration lowV = *new vibration(255,255);
+//        vibration mediumV = *new vibration(510,255);
+//        vibration hightV = *new vibration(765,255);
     
         // METHOD
         void setup();

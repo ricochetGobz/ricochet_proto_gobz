@@ -25,8 +25,9 @@ void ofApp::setup(){
         fftSmoothed[i] = 0;
     }
     
-    nBandsToGet = 1;
-
+    for(int j = 0 ; j <  nBandsToGet ; j++){
+        vibrations.push_back(*new vibration(20 + (20 * j), 20));
+    }
     
     ///// CUBE INIT ////
     /* Pushback, pour entrer un objet dans mon tableaux d'objet "cube".     */
@@ -85,7 +86,10 @@ void ofApp::update(){
         }
     }
     
-    updateArduino();
+    //mediumV.update(translateSoundFrequency());
+    translateSoundFrequency();
+    
+    //updateArduino();
 }
 //--------------------------------------------------------------
 void ofApp::updateArduino(){
@@ -118,6 +122,14 @@ void ofApp::draw(){
     if(cubeDragged > 0 && mouseDown){
         cubes[cubeDragged].contactZoneShowed = true;
     }
+    
+    for (vector<vibration>::iterator it = vibrations.begin(); it != vibrations.end(); ++it) {
+        (*it).draw();
+    }
+    
+//    lowV.draw();
+//    mediumV.draw();
+//    hightV.draw();
     
     ofFill();
 }
@@ -222,17 +234,22 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 float ofApp::translateSoundFrequency() {
     float * val = ofSoundGetSpectrum(nBandsToGet);		// request 128 values for fft
     float average = 0;
+    
+    
     for (int i = 0;i < nBandsToGet; i++){
         
-        // let the smoothed calue sink to zero:
-       // fftSmoothed[i] *= 0.96f;
-        
+//        // let the smoothed calue sink to zero:
+//        fftSmoothed[i] *= 0.96f;
+//        
         // take the max, either the smoothed or the incoming:
-//        if (fftSmoothed[i] < val[i])
-            fftSmoothed[i] = val[i] * 2000;
-        average += val[i] * 255;
+        if (fftSmoothed[i] < val[i])
+            fftSmoothed[i] = val[i] * 200;
+//        average += val[i] * 255;
+        vibrations[i].update(val[i] * 200);
         
     }
+    cout << "--" << endl;
+
     average = average * 50 / nBandsToGet;
     cout << fftSmoothed[0] << endl;
     return fftSmoothed[0];

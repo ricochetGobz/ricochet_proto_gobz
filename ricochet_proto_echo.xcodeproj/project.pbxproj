@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2BC6F501C90642500B74F1D /* vibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2BC6F4E1C90642500B74F1D /* vibration.cpp */; };
 		A2D480BC1C6A4C1000983DBE /* echoContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2D480BB1C6A4C1000983DBE /* echoContainer.cpp */; };
 		C5B1A4D41C19BD6000107DB8 /* ricochetCube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5B1A4D31C19BD6000107DB8 /* ricochetCube.cpp */; };
 		C5B1A4D71C19BEEF00107DB8 /* echo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5B1A4D51C19BEEF00107DB8 /* echo.cpp */; };
@@ -46,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		89EF127B1C6B461500A79B4A /* ricochet_proto_echoDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ricochet_proto_echoDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2BC6F4E1C90642500B74F1D /* vibration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vibration.cpp; sourceTree = "<group>"; };
+		A2BC6F4F1C90642500B74F1D /* vibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vibration.h; sourceTree = "<group>"; };
 		A2D480BB1C6A4C1000983DBE /* echoContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = echoContainer.cpp; sourceTree = "<group>"; };
 		A2D480BD1C6A4C1900983DBE /* echoContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = echoContainer.h; sourceTree = "<group>"; };
 		C56073A01C19C28200082FF9 /* echo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = echo.h; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				A2D480BD1C6A4C1900983DBE /* echoContainer.h */,
 				C5B1A4D51C19BEEF00107DB8 /* echo.cpp */,
 				C56073A01C19C28200082FF9 /* echo.h */,
+				A2BC6F4E1C90642500B74F1D /* vibration.cpp */,
+				A2BC6F4F1C90642500B74F1D /* vibration.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -222,6 +227,7 @@
 			files = (
 				C5B1A4D71C19BEEF00107DB8 /* echo.cpp in Sources */,
 				A2D480BC1C6A4C1000983DBE /* echoContainer.cpp in Sources */,
+				A2BC6F501C90642500B74F1D /* vibration.cpp in Sources */,
 				C5B1A4D41C19BD6000107DB8 /* ricochetCube.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
