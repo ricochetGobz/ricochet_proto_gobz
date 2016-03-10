@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "ricochetCube.h"
+#include "vibration.h"
 #include "echo.h"
 
 class echoContainer {

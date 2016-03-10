@@ -9,12 +9,14 @@
 #include <stdio.h>
 #include "ricochetCube.h"
 #include "echo.h"
+#include "vibration.h"
 
 //--------------------------------------------------------------
-ricochetCube::ricochetCube(ofPoint _pos, int _id){
+ricochetCube::ricochetCube(ofPoint _pos, int _id, vector<vibration>& _vibrations){
     color.set( ofRandom(255), ofRandom(255), ofRandom(255));
     pos = _pos;
     cubeId = _id;
+    vibrations = &_vibrations;
     
     colors.push_back(*new ofColor(143, 202, 217));
     colors.push_back(*new ofColor(193, 243, 221));
@@ -41,7 +43,15 @@ void ricochetCube::draw(){
 
 //--------------------------------------------------------------
 void ricochetCube::loadSound(string soundPath){
-        cubeSound.load(soundPath);
+    cubeSound.load(soundPath);
+    int note = cubeId % 6;
+    lowV = 255 - (note * 51);
+    hightV = note * 51;
+    
+//    if(lowV > hightV)
+//        mediumV = (cubeId % 3) * 51;
+//    else
+//        mediumV = 255 - ((cubeId % 3) * 51);
 }
 
 //--------------------------------------------------------------
@@ -53,6 +63,10 @@ void ricochetCube::moveTo(ofPoint _pos){
 //--------------------------------------------------------------
 void ricochetCube::play(){
     cubeSound.play();
+    cout <<  "play" << endl;
+    (*vibrations)[0].setVibration(lowV);
+    (*vibrations)[1].setVibration(mediumV);
+    (*vibrations)[2].setVibration(hightV);
 }
 
 //--------------------------------------------------------------

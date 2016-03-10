@@ -18,11 +18,19 @@ vibration::vibration(int _x, int _y){
 //--------------------------------------------------------------
 void vibration::draw(){
     ofFill();
+    ofNoFill();
     ofSetColor(color);
     ofDrawCircle(posx, posy, (2 + v));
 }
 
 //--------------------------------------------------------------
-void vibration::update(int _vibration){
-    v = _vibration;
+void vibration::update(){
+    v -= v * 0.01;
+    cout << v << endl;
+}
+
+//--------------------------------------------------------------
+void vibration::setVibration(int _vibration){
+    if( _vibration > v)
+        v = _vibration;
 }

@@ -21,7 +21,8 @@ public:
     
     // METHODS
     void draw();
-    void update(int _vibration);
+    void update();
+    void setVibration(int _vibration);
     
 private:
     // VARS

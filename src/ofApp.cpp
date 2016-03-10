@@ -20,19 +20,14 @@ void ofApp::setup(){
     //sounds.push_back(*new ofSoundPlayer);
     vector< ofSoundPlayer>::iterator itSounds = sounds.begin();
     
-    fftSmoothed = new float[8192];
-    for (int i = 0; i < 8192; i++){
-        fftSmoothed[i] = 0;
-    }
-    
-    for(int j = 0 ; j <  nBandsToGet ; j++){
-        vibrations.push_back(*new vibration(20 + (20 * j), 20));
-    }
+    vibrations.push_back(*new vibration(255,255));
+    vibrations.push_back(*new vibration(510,255));
+    vibrations.push_back(*new vibration(765,255));
     
     ///// CUBE INIT ////
     /* Pushback, pour entrer un objet dans mon tableaux d'objet "cube".     */
     for(int i = 0; i < nCube; i++) {
-        cubes.push_back(*new ricochetCube(ofPoint((ofGetWidth()*i/nCube)+50, ofGetHeight()-100), i));
+        cubes.push_back(*new ricochetCube(ofPoint((ofGetWidth()*i/nCube)+50, ofGetHeight()-100), i, vibrations));
         cubes[i].loadSound("./sounds/note_" + std::to_string((i%6)+1) +".mp3");
     }
     
@@ -86,8 +81,9 @@ void ofApp::update(){
         }
     }
     
-    //mediumV.update(translateSoundFrequency());
-    translateSoundFrequency();
+    for (vector<vibration>::iterator it = vibrations.begin(); it != vibrations.end(); ++it) {
+        (*it).update();
+    }
     
     //updateArduino();
 }
@@ -122,16 +118,12 @@ void ofApp::draw(){
     if(cubeDragged > 0 && mouseDown){
         cubes[cubeDragged].contactZoneShowed = true;
     }
+
+    ofFill();
     
     for (vector<vibration>::iterator it = vibrations.begin(); it != vibrations.end(); ++it) {
         (*it).draw();
     }
-    
-//    lowV.draw();
-//    mediumV.draw();
-//    hightV.draw();
-    
-    ofFill();
 }
 
 //--------------------------------------------------------------
@@ -226,31 +218,4 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
-}
-
-
-//--------------------------------------------------------------
-
-float ofApp::translateSoundFrequency() {
-    float * val = ofSoundGetSpectrum(nBandsToGet);		// request 128 values for fft
-    float average = 0;
-    
-    
-    for (int i = 0;i < nBandsToGet; i++){
-        
-//        // let the smoothed calue sink to zero:
-//        fftSmoothed[i] *= 0.96f;
-//        
-        // take the max, either the smoothed or the incoming:
-        if (fftSmoothed[i] < val[i])
-            fftSmoothed[i] = val[i] * 200;
-//        average += val[i] * 255;
-        vibrations[i].update(val[i] * 200);
-        
-    }
-    cout << "--" << endl;
-
-    average = average * 50 / nBandsToGet;
-    cout << fftSmoothed[0] << endl;
-    return fftSmoothed[0];
 }

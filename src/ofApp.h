@@ -3,13 +3,11 @@
 #include "ofMain.h"
 #include "ricochetCube.h"
 #include "echoContainer.h"
-#include "vibration.h"
 
 class ofApp : public ofBaseApp{
 
     /* Le .h sert à déclarer les variables appelé dans le .CPP */
 	public:
-
     
     private:
         // VAR
@@ -27,16 +25,11 @@ class ofApp : public ofBaseApp{
         vector<echoContainer> echoContainers;
     
         /* AUDIO PART */
-        float * fftSmoothed;
-        int nBandsToGet = 512;
-
         vector<ofSoundPlayer> sounds;
     
+        /* VIBRATION */
         vector<vibration> vibrations;
-    
-//        vibration lowV = *new vibration(255,255);
-//        vibration mediumV = *new vibration(510,255);
-//        vibration hightV = *new vibration(765,255);
+
     
         // METHOD
         void setup();
