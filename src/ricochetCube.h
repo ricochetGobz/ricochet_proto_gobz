@@ -10,12 +10,12 @@
 #define ricochetCube_h
 
 #include "ofMain.h"
-#include "vibration.h"
+#include "vibrationContainer.h"
 
 class ricochetCube{
     public:
         // Constructor
-        ricochetCube(ofPoint _pos, int _id, vector<vibration>& _vibrations);
+        ricochetCube(ofPoint _pos, int _id, vibrationContainer& _vibrationContainer);
 
         // VARS
         int cubeId;
@@ -26,7 +26,7 @@ class ricochetCube{
         int mediumV = 0;
         int hightV = 0;
     
-        vector<vibration>* vibrations;
+        vibrationContainer* vibrationContainer;
 
         // METHODS
         void draw();

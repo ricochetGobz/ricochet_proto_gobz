@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ricochetCube.h"
 #include "echoContainer.h"
+#include "vibrationContainer.h"
 
 class ofApp : public ofBaseApp{
 
@@ -28,8 +29,7 @@ class ofApp : public ofBaseApp{
         vector<ofSoundPlayer> sounds;
     
         /* VIBRATION */
-        vector<vibration> vibrations;
-
+        vibrationContainer vibrationContainer;
     
         // METHOD
         void setup();

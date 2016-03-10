@@ -18,16 +18,12 @@ void ofApp::setup(){
     
     /// SOUND INIT ////
     //sounds.push_back(*new ofSoundPlayer);
-    vector< ofSoundPlayer>::iterator itSounds = sounds.begin();
-    
-    vibrations.push_back(*new vibration(255,255));
-    vibrations.push_back(*new vibration(510,255));
-    vibrations.push_back(*new vibration(765,255));
+    vector<ofSoundPlayer>::iterator itSounds = sounds.begin();
     
     ///// CUBE INIT ////
     /* Pushback, pour entrer un objet dans mon tableaux d'objet "cube".     */
     for(int i = 0; i < nCube; i++) {
-        cubes.push_back(*new ricochetCube(ofPoint((ofGetWidth()*i/nCube)+50, ofGetHeight()-100), i, vibrations));
+        cubes.push_back(*new ricochetCube(ofPoint((ofGetWidth()*i/nCube)+50, ofGetHeight()-100), i, vibrationContainer));
         cubes[i].loadSound("./sounds/note_" + std::to_string((i%6)+1) +".mp3");
     }
     
@@ -81,9 +77,7 @@ void ofApp::update(){
         }
     }
     
-    for (vector<vibration>::iterator it = vibrations.begin(); it != vibrations.end(); ++it) {
-        (*it).update();
-    }
+    vibrationContainer.update();
     
     //updateArduino();
 }
@@ -121,9 +115,7 @@ void ofApp::draw(){
 
     ofFill();
     
-    for (vector<vibration>::iterator it = vibrations.begin(); it != vibrations.end(); ++it) {
-        (*it).draw();
-    }
+    vibrationContainer.draw();
 }
 
 //--------------------------------------------------------------
